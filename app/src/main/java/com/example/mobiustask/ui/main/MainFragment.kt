@@ -12,6 +12,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.example.mobiustask.MainActivity
 import com.example.mobiustask.R
+import com.example.mobiustask.model.DataModel
+import com.example.mobiustask.model.DataModelItem
+import com.example.mobiustask.model.Slab
 
 class MainFragment : Fragment() {
 var mcontext : Context? = null
@@ -38,7 +41,32 @@ var mcontext : Context? = null
 
         viewModel.init()
         viewModel.getNewsRepository()!!.observe(this, Observer { t->
-            Log.e("Response",t.get(0).id)
+            var data : DataModelItem=t.get(0);
+            var slabs =data.slabs
+            var slab : Slab=slabs.get(0)
+            Log.e("Code",data.code)
+            Log.e("Valid Until",data.valid_until)
+            Log.e("Ribben Message",data.ribbon_msg)
+            Log.e("wager_to_release_ratio_numerator", data.wager_to_release_ratio_numerator.toString())
+            Log.e("wager_to_release_ratio_denominator", data.wager_to_release_ratio_denominator.toString())
+            Log.e("wager_bonus_expiry", data.wager_bonus_expiry.toString())
+            Log.e("slab.max", slab.max.toString())
+            Log.e("slab.min", slab.min.toString())
+            Log.e("slab.wagered_max", slab.wagered_max.toString())
+            Log.e("slab.wagered_percent", slab.wagered_percent.toString())
+            Log.e("slab.otc_max", slab.otc_max.toString())
+            Log.e("slab.otc_percent", slab.otc_percent.toString())
+
+
+
+
+
+
+
+
+
+
+
         })
     }
 
